@@ -1,0 +1,5 @@
+api_key: YOUR_API_KEY
+dev_group_id: DEV_GROUP
+stage_group_id: STAGE_GROUP
+preprod_group_id: PREPROD_GROUP
+prod_group_id: PREPROD_GROUP
