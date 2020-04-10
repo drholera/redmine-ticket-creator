@@ -1,1 +1,1 @@
-# redmine-ticket-creator
+# Redmine Ticket Creator

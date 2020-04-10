@@ -1,5 +1,8 @@
-api_key: YOUR_API_KEY
-dev_group_id: DEV_GROUP
-stage_group_id: STAGE_GROUP
-preprod_group_id: PREPROD_GROUP
-prod_group_id: PREPROD_GROUP
+redmine_settings:
+  url: 'YOUR_HOST'
+  api_key: YOUR_API_KEY
+deployment_groups:
+  dev: DEV_GROUP
+  stage: STAGE_GROUP
+  preprod: PREPROD_GROUP
+  prod: PREPROD_GROUP
