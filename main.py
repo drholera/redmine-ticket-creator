@@ -3,7 +3,8 @@ from environment import Environment
 
 def select_env():
     title = "For what environment do we need a deployment ticket?"
-    options = ["dev", "stage", "preprod", "prod",]
+    config = Environment.get_config()
+    options = config['deployment_groups'].keys()
 
     return pick(options, title)
     

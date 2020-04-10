@@ -12,7 +12,7 @@ class Environment(object):
 
     def __init__(self, env):
         self._instance = env
-        self._init_config()
+        self._config = self._init_config()
 
 
     def check_connection(self):
@@ -35,10 +35,18 @@ class Environment(object):
         # If we don't have a positive result - return False.
         return False
 
-    def _init_config(self):
+    @staticmethod
+    def get_config():
         """ Load configuration """
         with open('./config/config.yml', 'r') as stream:
             try:
-                self._config = yaml.safe_load(stream)
+                return yaml.safe_load(stream)
             except yaml.YAMLError as exc:
-                print(exc)        
+                print(exc)
+                return False        
+
+    # Protected section.
+    @classmethod
+    def _init_config(cls):
+        """ Load configuration """
+        return cls.get_config()
