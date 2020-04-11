@@ -6,3 +6,5 @@ deployment_groups:
   stage: STAGE_GROUP
   preprod: PREPROD_GROUP
   prod: PREPROD_GROUP
+# 'json' or 'xml'
+api_format: 'json'
