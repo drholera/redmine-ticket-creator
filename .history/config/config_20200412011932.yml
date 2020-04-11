@@ -5,8 +5,8 @@ redmine_settings:
 deployment_groups:
   # Strings, not ints
   dev: DEV_ID
-  stage: STAGE_ID
-  preprod: PREPROD_ID
-  prod: PROD_ID
+  stage: '6'
+  preprod: '7'
+  prod: '8'
 # 'json' or 'xml'
 api_format: 'json'

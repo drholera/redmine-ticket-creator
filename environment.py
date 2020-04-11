@@ -37,11 +37,16 @@ class Environment(object):
         return False
 
     def group_ticket_list(self):
-        full_url = self._url + 'issues.' + self._config['api_format'] + '?assigned_to_id=' + self._config['deployment_groups'][self._instance]
-        res = requests.get(full_url, headers=self._headers)
+        try:
+            full_url = self._url + 'issues.' + self._config['api_format'] + '?assigned_to_id=' + self._config['deployment_groups'][self._instance]
+            res = requests.get(full_url, headers=self._headers)
 
-        # todo: add handlers for the response.
-        print(res.content)
+            # Prints list of tickets which will be added to a deployment.
+            self._create_tickets_list(res)
+        except HTTPError as http_err:
+            print(f'HTTP error occurred: {http_err}')
+        except ConnectionError as e:
+            print(e.with_traceback) 
 
     @staticmethod
     def get_config():
@@ -58,3 +63,16 @@ class Environment(object):
     def _init_config(cls):
         """ Load configuration """
         return cls.get_config()
+
+    def _create_tickets_list(self, r: requests.Response):
+        """ Create a pretty formatter list from a redmine response """
+        print(colored('Issues list:', 'yellow'))
+        if self._config['api_format'] == 'json':
+            result = r.json()
+            for value in result['issues']:
+                issue_link = self._config['redmine_settings']['url'] + 'issues/' + str(value['id'])
+                issue_title = value['subject']
+                print(colored(issue_link + ' ' + issue_title, 'yellow', attrs=['underline']))
+        else:
+            # @todo: add XML parsing functionality. 
+            pass
