@@ -11,6 +11,7 @@ class Environment(object):
     _instance = None
     _url = None
     _headers = None
+    _ticket_list = []
 
     def __init__(self, env):
         self._instance = env
@@ -72,6 +73,7 @@ class Environment(object):
             for value in result['issues']:
                 issue_link = self._config['redmine_settings']['url'] + 'issues/' + str(value['id'])
                 issue_title = value['subject']
+                self._ticket_list.append(issue_link + ' ' + issue_title)
                 print(colored(issue_link + ' ' + issue_title, 'yellow', attrs=['underline']))
         else:
             # @todo: add XML parsing functionality. 
