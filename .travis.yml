@@ -5,13 +5,11 @@ sudo: false
 language: python
 
 # Set the python version to 2.7
-python: 2.7
+python: 3.7
 
 # Install the codecov pip dependency
 install:
-  - pip install codecov
-  - pip install pytest pytest-cov
-
+  - pip install codecov pytest pytest-cov
 # Run the unit test
 script:
   - pytest --cov=./tests/test_utils.py
