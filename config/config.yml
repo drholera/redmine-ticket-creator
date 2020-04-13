@@ -11,8 +11,8 @@ deployment_groups:
 # 'json' or 'xml'
 api_format: 'json'
 issue_params:
-  project_id: 1584
-  priority_id: 4
+  project_id: PRJ_ID
+  priority_id: PRIORITY_ID
   subject: "Deployment to {env}. {date}"
 # todo: Add http auth handling.
 http_auth:
