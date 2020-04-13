@@ -10,5 +10,5 @@ def test_get_issues_list():
     xml_list = {'issues': {'issue': [1, 2]}}
 
     assert utils.get_issues_list(json_list, 'json') == [1, 2]
-    assert utils.get_issues_list(json_list)
+    assert utils.get_issues_list(json_list) == [1, 2]
     assert utils.get_issues_list(xml_list, 'xml') == [1, 2]
