@@ -16,6 +16,7 @@ class Environment(object):
     _headers = None
     _ticket_list = []
     _utils = None
+    _auth = None
 
     def __init__(self, env):
         self._instance = env
@@ -24,13 +25,15 @@ class Environment(object):
         self._headers = {
             'X-Redmine-API-Key': str(self._config['redmine_settings']['api_key'])}
         self._utils = Utils()
+        self._auth = (self._config['http_auth']['username'],
+                      self._config['http_auth']['pass'])
 
     def check_connection(self):
         """ Checking connection - retreiving list of tickets """
         try:
             res = requests.get(self._url + 'issues.' +
-                               self._config['api_format'], headers=self._headers)
-                               
+                               self._config['api_format'], headers=self._headers, auth=self._auth if self._config['http_auth']['enabled'] else '')
+
             if res.status_code == 200:
                 print(colored('Connection is: 200. OK.', 'green'))
                 return True
@@ -50,7 +53,8 @@ class Environment(object):
                 self._config['api_format'] + '?assigned_to_id=' + \
                 str(self._config['deployment_groups'][self._instance])
 
-            res = requests.get(full_url, headers=self._headers)
+            res = requests.get(full_url, headers=self._headers,
+                               auth=self._auth if self._config['http_auth']['enabled'] else '')
 
             # Prints list of tickets which will be added to a deployment.
             self._create_tickets_list(res)
@@ -80,11 +84,13 @@ class Environment(object):
                     'subject': ticket_subject,
                     'description': '\n'.join(map(str, self._ticket_list))
                 }}
-                res = requests.post(full_url, headers=self._headers, json=body)
+                res = requests.post(full_url, headers=self._headers, json=body,
+                                    auth=self._auth if self._config['http_auth']['enabled'] else '')
                 if res.status_code == 200 or res.status_code == 201:
-                    # todo: Add XML/Json handling
-                    result = self._utils.parse_response(res, self._config['api_format'])
-                    print(self._url + 'issues/' + str(result['issue']['id']))
+                    result = self._utils.parse_response(
+                        res, self._config['api_format'])
+                    print(colored('Done!', 'green'))
+                    print(colored(self._url + 'issues/' + str(result['issue']['id'])))
                     return
 
                 print(res.content)
