@@ -1,6 +1,7 @@
 import sys
+import json
+import xmltodict
 from distutils.util import strtobool
-from xml.etree import ElementTree
 from requests import Response
 
 
@@ -21,6 +22,11 @@ class Utils:
         if format == 'json':
             return r.json()
         elif format == 'xml':
-            return ElementTree.fromstring(r.content)
+            d = xmltodict.parse(r.content, xml_attribs=False)
+            j = json.dumps(d)
+            return json.loads(j)
         else:
             return r.content
+
+    def get_issues_list(self, dict, format = 'json'):
+        return dict['issues'] if format == 'json' else dict['issues']['issue']

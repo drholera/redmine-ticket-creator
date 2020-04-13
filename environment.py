@@ -83,7 +83,7 @@ class Environment(object):
                 res = requests.post(full_url, headers=self._headers, json=body)
                 if res.status_code == 200 or res.status_code == 201:
                     # todo: Add XML/Json handling
-                    result = res.json()
+                    result = self._utils.parse_response(res, self._config['api_format'])
                     print(self._url + 'issues/' + str(result['issue']['id']))
                     return
 
@@ -113,7 +113,7 @@ class Environment(object):
         """ Create a pretty formatter list from a redmine response """
         print(colored('Issues list:', 'yellow'))
         result = self._utils.parse_response(r, self._config['api_format'])
-        for value in result['issues']:
+        for value in self._utils.get_issues_list(result, self._config['api_format']):
 
             issue_link = self._config['redmine_settings']['url'] + \
                 'issues/' + str(value['id'])
