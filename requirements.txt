@@ -3,3 +3,4 @@ pyyaml
 termcolor 
 pick
 xmltodict
+pytest
