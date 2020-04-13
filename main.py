@@ -15,7 +15,7 @@ if __name__ == '__main__':
         env = Environment(user_selection)
         if(env.check_connection()):
             env.group_ticket_list()
-            # todo: Add creation ticket handler here.
+            env.create_deployment_ticket()
             pass
     else:
         print('Unexpected error. Shutting down')

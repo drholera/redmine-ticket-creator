@@ -1,7 +1,10 @@
+import sys
 import yaml
 import requests
 from requests.exceptions import HTTPError
 from termcolor import colored
+from distutils.util import strtobool
+from datetime import date
 
 
 class Environment(object):
@@ -39,7 +42,7 @@ class Environment(object):
 
     def group_ticket_list(self):
         try:
-            full_url = self._url + 'issues.' + self._config['api_format'] + '?assigned_to_id=' + self._config['deployment_groups'][self._instance]
+            full_url = self._url + 'issues.' + self._config['api_format'] + '?assigned_to_id=' + str(self._config['deployment_groups'][self._instance])
             res = requests.get(full_url, headers=self._headers)
 
             # Prints list of tickets which will be added to a deployment.
@@ -48,6 +51,38 @@ class Environment(object):
             print(f'HTTP error occurred: {http_err}')
         except ConnectionError as e:
             print(e.with_traceback) 
+
+    def create_deployment_ticket(self):
+        """ 
+        Create deployment ticket in 2 cases -
+        if we have anything to deploy and if user will confirm it 
+        """
+        if len(self._ticket_list) <= 0:
+            return
+
+        if self._prompt('Dow you want to create a ticket with this list?'):
+            try:
+                ticket_subject = self._config['issue_params']['subject'].format(env=self._instance, date=date.today())
+                full_url = self._url + 'issues.' + self._config['api_format']
+                body = {'issue': {
+                    'project_id': self._config['issue_params']['project_id'],
+                    'priority_id': self._config['issue_params']['priority_id'],
+                    'subject': ticket_subject,
+                    'description': '\n'.join(map(str, self._ticket_list))
+                } }
+                res = requests.post(full_url, headers=self._headers, json=body)
+                if res.status_code == 200 or res.status_code == 201:
+                    # todo: Add XML/Json handling
+                    result = res.json()
+                    print(self._url + 'issues/' + str(result['issue']['id']))
+                    return
+
+
+                print(res.content)
+            except HTTPError as http_err:
+                 print(f'HTTP error occurred: {http_err}')
+            except ConnectionError as e:
+                print(e.with_traceback) 
 
     @staticmethod
     def get_config():
@@ -78,3 +113,13 @@ class Environment(object):
         else:
             # @todo: add XML parsing functionality. 
             pass
+
+    def _prompt(self, query):
+        sys.stdout.write("%s [y/n]: " % query)
+        val = input()
+        try:
+            ret = strtobool(val)
+        except ValueError:
+            sys.stdout.write("Please answer with y/n")
+            return self._prompt(query)
+        return ret

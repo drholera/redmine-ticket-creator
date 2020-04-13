@@ -10,3 +10,12 @@ deployment_groups:
   prod: PROD_ID
 # 'json' or 'xml'
 api_format: 'json'
+issue_params:
+  project_id: 1584
+  priority_id: 4
+  subject: "Deployment to {env}. {date}"
+# todo: Add http auth handling.
+http_auth:
+  enabled: False
+  username: USERNAME
+  pass: PASSWORD
