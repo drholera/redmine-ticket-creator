@@ -19,6 +19,8 @@ def test_prompt(capsys):
 
     with mock.patch('builtins.input', return_value = 'y'):
         assert utils.prompt("Positive?") == True
+        captured = capsys.readouterr()
+        assert captured.out == 'Positive? [y/n]: '
 
     with mock.patch('builtins.input', return_value = 'yes'):
         assert utils.prompt("Full yes input") == True
