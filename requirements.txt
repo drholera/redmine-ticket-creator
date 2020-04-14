@@ -4,3 +4,4 @@ termcolor
 pick
 xmltodict
 pytest
+requests_mock
