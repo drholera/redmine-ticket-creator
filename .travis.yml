@@ -14,7 +14,6 @@ install:
 # Run the unit test
 script:
   - coverage run tests/test_utils.py
-  - coverage report
 
 # Push the results back to codecov
 after_success:
