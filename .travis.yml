@@ -9,11 +9,11 @@ python: 3.7
 
 # Install the codecov pip dependency
 install:
-  - pip install codecov
+  - pip install codecov pytest-cov
   - pip install -r requirements.txt
 # Run the unit test
 script:
-  - coverage run tests/test_utils.py
+  - pytest --cov=utils tests/
 
 # Push the results back to codecov
 after_success:
