@@ -14,7 +14,7 @@ class Utils:
         try:
             ret = strtobool(val)
         except ValueError:
-            sys.stdout.write("Unexpected input. Shutting down.")
+            sys.stderr.write("Unexpected input. Shutting down.")
             return False
         return ret
 

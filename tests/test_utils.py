@@ -14,7 +14,7 @@ def test_get_issues_list():
     assert utils.get_issues_list(json_list) == [1, 2]
     assert utils.get_issues_list(xml_list, 'xml') == [1, 2]
 
-def test_prompt():
+def test_prompt(capsys):
     utils = Utils()
 
     with mock.patch('builtins.input', return_value = 'y'):
@@ -23,8 +23,12 @@ def test_prompt():
     with mock.patch('builtins.input', return_value = 'yes'):
         assert utils.prompt("Full yes input") == True
 
+    # Clear stdout before next assert.
+    captured = capsys.readouterr()
     with mock.patch('builtins.input', return_value = 'asdasd'):
         assert utils.prompt("Random input") == False
+        captured = capsys.readouterr()
+        assert captured.err == 'Unexpected input. Shutting down.'
 
     with mock.patch('builtins.input', return_value = 'n'):
         assert utils.prompt("Negative?") == False
