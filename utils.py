@@ -14,8 +14,8 @@ class Utils:
         try:
             ret = strtobool(val)
         except ValueError:
-            sys.stdout.write("Please answer with y/n")
-            return self.prompt(query)
+            sys.stdout.write("Unexpected input. Shutting down.")
+            return False
         return ret
 
     def parse_response(self, r: Response, format='json'):
