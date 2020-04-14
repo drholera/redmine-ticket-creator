@@ -13,7 +13,8 @@ install:
   - pip install -r requirements.txt
 # Run the unit test
 script:
-  - coverage run --source=tests test_utils.py
+  - coverage run --source=tests/ test_utils.py
+  - coverage report
 
 # Push the results back to codecov
 after_success:
