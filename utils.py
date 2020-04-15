@@ -15,7 +15,7 @@ class Utils:
             ret = strtobool(val)
         except ValueError:
             sys.stderr.write("Unexpected input. Shutting down.")
-            return False
+            return self.prompt(query)
         return ret
 
     def parse_response(self, r: Response, format='json'):
