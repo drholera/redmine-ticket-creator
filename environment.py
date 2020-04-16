@@ -43,7 +43,7 @@ class Environment(object):
             print(f'HTTP error occurred: {http_err}')
         except ConnectionError as e:
             print(e.with_traceback)
-        finally:
+        except Exception as e:
             return False
 
     def group_ticket_list(self):
