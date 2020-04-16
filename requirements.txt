@@ -5,3 +5,4 @@ pick
 xmltodict
 pytest
 requests_mock
+mockfs
