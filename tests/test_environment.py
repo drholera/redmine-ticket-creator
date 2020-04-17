@@ -7,6 +7,7 @@ import requests_mock
 import requests
 import io
 import pytest
+from requests.exceptions import HTTPError
 
 
 class TestEnvironment(unittest.TestCase):
@@ -32,6 +33,14 @@ class TestEnvironment(unittest.TestCase):
             m.register_uri('GET', 'http://error_redmine_url.com/issues.json', status_code=500)
             self.env._url = 'http://error_redmine_url.com/'
             self.assertFalse(self.env.check_connection())
+
+    def test_catching_exceptions(self):
+        with requests_mock.Mocker() as m:
+            m.register_uri('GET', 'http://ex_redmine_url.com/issues.json', exc=HTTPError)
+            self.env._url = 'http://ex_redmine_url.com/'
+            self.assertRaises(HTTPError, self.env.check_connection())
+                
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -38,13 +38,11 @@ class Environment(object):
                 print(colored('Connection is: 200. OK.', 'green'))
                 return True
 
-            print(colored('Connection is: ' + res.status_code + '. KO', 'red'))
+            print(colored('Connection is: ' + str(res.status_code) + '. KO', 'red'))
         except HTTPError as http_err:
             print(f'HTTP error occurred: {http_err}')
-        except ConnectionError as e:
-            print(e.with_traceback)
         except Exception as e:
-            return False
+            raise e
 
     def group_ticket_list(self):
         try:
