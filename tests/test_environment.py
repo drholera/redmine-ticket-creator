@@ -8,6 +8,7 @@ import requests
 import io
 import pytest
 import json
+from requests.exceptions import HTTPError
 
 
 class TestEnvironment(unittest.TestCase):
@@ -34,6 +35,7 @@ class TestEnvironment(unittest.TestCase):
             self.env._url = 'http://error_redmine_url.com/'
             self.assertFalse(self.env.check_connection())
 
+
     def test_group_ticket_list(self):
         with requests_mock.Mocker() as m:
             with open('tests/list_tickets.json') as json_file:
@@ -44,6 +46,12 @@ class TestEnvironment(unittest.TestCase):
             self.env._url = 'http://group_ticket.com/'
             self.assertTrue(self.env.group_ticket_list())
 
+    def test_catching_exceptions(self):
+        with requests_mock.Mocker() as m:
+            m.register_uri('GET', 'http://ex_redmine_url.com/issues.json', exc=HTTPError)
+            self.env._url = 'http://ex_redmine_url.com/'
+            with self.assertRaises(HTTPError):
+                self.env.check_connection()
 
 
 if __name__ == '__main__':

@@ -38,10 +38,10 @@ class Environment(object):
                 print(colored('Connection is: 200. OK.', 'green'))
                 return True
 
-            print(colored('Connection is: ' + res.status_code + '. KO', 'red'))
+            print(colored('Connection is: ' + str(res.status_code) + '. KO', 'red'))
         except HTTPError as http_err:
             print(f'HTTP error occurred: {http_err}')
-            return False
+            raise http_err
         except:
             print('Something went wrong!')
             return False
