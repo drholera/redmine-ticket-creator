@@ -41,10 +41,12 @@ class Environment(object):
             print(colored('Connection is: ' + res.status_code + '. KO', 'red'))
         except HTTPError as http_err:
             print(f'HTTP error occurred: {http_err}')
-        except ConnectionError as e:
-            print(e.with_traceback)
-        except Exception as e:
             return False
+        except:
+            print('Something went wrong!')
+            return False
+            
+        return False
 
     def group_ticket_list(self):
         try:
@@ -59,13 +61,17 @@ class Environment(object):
             self._create_tickets_list(res)
         except HTTPError as http_err:
             print(f'HTTP error occurred: {http_err}')
-        except ConnectionError as e:
-            print(e.with_traceback)
+            return False
+        except ConnectionError as ex:
+            print(ex.with_traceback)
+            return False
+
+        return True
 
     def create_deployment_ticket(self):
-        """ 
+        """
         Create deployment ticket in 2 cases -
-        if we have anything to deploy and if user will confirm it 
+        if we have anything to deploy and if user will confirm it.
         """
         if len(self._ticket_list) <= 0:
             return
@@ -95,8 +101,8 @@ class Environment(object):
                 print(res.content)
             except HTTPError as http_err:
                 print(f'HTTP error occurred: {http_err}')
-            except ConnectionError as e:
-                print(e.with_traceback)
+            except ConnectionError as ex:
+                print(ex.with_traceback)
 
     @staticmethod
     def get_config():

@@ -20,6 +20,7 @@ class Utils:
 
     def parse_response(self, r: Response, format='json'):
         if format == 'json':
+            strinn = json.dumps(r.json())
             return r.json()
         elif format == 'xml':
             d = xmltodict.parse(r.content, xml_attribs=False)

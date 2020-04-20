@@ -1,0 +1,229 @@
+{
+    "issues":[
+       {
+          "id":6,
+          "project":{
+             "id":1,
+             "name":"Test project"
+          },
+          "tracker":{
+             "id":1,
+             "name":"Bug"
+          },
+          "status":{
+             "id":3,
+             "name":"Resolved"
+          },
+          "priority":{
+             "id":2,
+             "name":"Normal"
+          },
+          "author":{
+             "id":1,
+             "name":"Redmine Admin"
+          },
+          "assigned_to":{
+             "id":5,
+             "name":"Deployment DEV"
+          },
+          "subject":"[Admin][SEO] Screaming Frog SEO Spider/12.6 User Agent is not allowed",
+          "description":"",
+          "start_date":"2020-04-11",
+          "due_date":null,
+          "done_ratio":0,
+          "is_private":false,
+          "estimated_hours":null,
+          "created_on":"2020-04-11T21:42:50Z",
+          "updated_on":"2020-04-11T21:43:05Z",
+          "closed_on":null
+       },
+       {
+          "id":5,
+          "project":{
+             "id":1,
+             "name":"Test project"
+          },
+          "tracker":{
+             "id":1,
+             "name":"Bug"
+          },
+          "status":{
+             "id":3,
+             "name":"Resolved"
+          },
+          "priority":{
+             "id":2,
+             "name":"Normal"
+          },
+          "author":{
+             "id":1,
+             "name":"Redmine Admin"
+          },
+          "assigned_to":{
+             "id":5,
+             "name":"Deployment DEV"
+          },
+          "subject":"Work on Some project",
+          "description":"",
+          "start_date":"2020-04-11",
+          "due_date":null,
+          "done_ratio":0,
+          "is_private":false,
+          "estimated_hours":null,
+          "created_on":"2020-04-11T21:42:37Z",
+          "updated_on":"2020-04-11T21:43:05Z",
+          "closed_on":null
+       },
+       {
+          "id":4,
+          "project":{
+             "id":1,
+             "name":"Test project"
+          },
+          "tracker":{
+             "id":1,
+             "name":"Bug"
+          },
+          "status":{
+             "id":3,
+             "name":"Resolved"
+          },
+          "priority":{
+             "id":2,
+             "name":"Normal"
+          },
+          "author":{
+             "id":1,
+             "name":"Redmine Admin"
+          },
+          "assigned_to":{
+             "id":5,
+             "name":"Deployment DEV"
+          },
+          "subject":"[BE] Update Drupal core. ",
+          "description":"",
+          "start_date":"2020-04-11",
+          "due_date":null,
+          "done_ratio":0,
+          "is_private":false,
+          "estimated_hours":null,
+          "created_on":"2020-04-11T21:42:21Z",
+          "updated_on":"2020-04-11T21:43:05Z",
+          "closed_on":null
+       },
+       {
+          "id":3,
+          "project":{
+             "id":1,
+             "name":"Test project"
+          },
+          "tracker":{
+             "id":1,
+             "name":"Bug"
+          },
+          "status":{
+             "id":3,
+             "name":"Resolved"
+          },
+          "priority":{
+             "id":2,
+             "name":"Normal"
+          },
+          "author":{
+             "id":1,
+             "name":"Redmine Admin"
+          },
+          "assigned_to":{
+             "id":5,
+             "name":"Deployment DEV"
+          },
+          "subject":"[FEAT] [React] My Account Log-In Page",
+          "description":"",
+          "start_date":"2020-04-11",
+          "due_date":null,
+          "done_ratio":0,
+          "is_private":false,
+          "estimated_hours":null,
+          "created_on":"2020-04-11T21:42:16Z",
+          "updated_on":"2020-04-11T21:43:05Z",
+          "closed_on":null
+       },
+       {
+          "id":2,
+          "project":{
+             "id":1,
+             "name":"Test project"
+          },
+          "tracker":{
+             "id":1,
+             "name":"Bug"
+          },
+          "status":{
+             "id":3,
+             "name":"Resolved"
+          },
+          "priority":{
+             "id":2,
+             "name":"Normal"
+          },
+          "author":{
+             "id":1,
+             "name":"Redmine Admin"
+          },
+          "assigned_to":{
+             "id":5,
+             "name":"Deployment DEV"
+          },
+          "subject":"6.5 [A] Alt tag fixing and adding title tag",
+          "description":"",
+          "start_date":"2020-04-11",
+          "due_date":null,
+          "done_ratio":0,
+          "is_private":false,
+          "estimated_hours":null,
+          "created_on":"2020-04-11T21:42:11Z",
+          "updated_on":"2020-04-11T21:43:05Z",
+          "closed_on":null
+       },
+       {
+          "id":1,
+          "project":{
+             "id":1,
+             "name":"Test project"
+          },
+          "tracker":{
+             "id":1,
+             "name":"Bug"
+          },
+          "status":{
+             "id":3,
+             "name":"Resolved"
+          },
+          "priority":{
+             "id":2,
+             "name":"Normal"
+          },
+          "author":{
+             "id":1,
+             "name":"Redmine Admin"
+          },
+          "assigned_to":{
+             "id":5,
+             "name":"Deployment DEV"
+          },
+          "subject":"7.1 [A] Display message when there are no results",
+          "description":"",
+          "start_date":"2020-04-11",
+          "due_date":null,
+          "done_ratio":0,
+          "is_private":false,
+          "estimated_hours":null,
+          "created_on":"2020-04-11T21:42:08Z",
+          "updated_on":"2020-04-11T21:43:04Z",
+          "closed_on":null
+       }
+    ],
+    "total_count":6,
+    "offset":0,
+    "limit":25
+ }
