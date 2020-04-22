@@ -14,7 +14,6 @@ issue_params:
   project_id: PRJ_ID
   priority_id: PRIORITY_ID
   subject: "Deployment to {env}. {date}"
-# todo: Add http auth handling.
 http_auth:
   enabled: False
   username: USERNAME
