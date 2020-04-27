@@ -74,7 +74,7 @@ class Environment(object):
         if we have anything to deploy and if user will confirm it.
         """
         if len(self._ticket_list) <= 0:
-            return
+            return False
 
         if self._utils.prompt('Dow you want to create a ticket with this list?'):
             try:
@@ -96,7 +96,7 @@ class Environment(object):
                         res, self._config['api_format'])
                     print(colored('Done!', 'green'))
                     print(colored(self._url + 'issues/' + str(result['issue']['id'])))
-                    return
+                    return True
 
                 print(res.content)
             except HTTPError as http_err:
