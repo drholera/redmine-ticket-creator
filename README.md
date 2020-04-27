@@ -16,15 +16,15 @@ That's all, you're ready to configure your Ticket Creator.
 
 # Configuration
 
-1. Open `config/config.yml`
-2. Add a proper information to required variables. For examlple - if you have only 2 Deployment Groups - for Preprod and Prod servers you can just delete `dev` and `stage` rows. 
+1. Open ```config/config.yml```
+2. Add a proper information to required variables. For examlple - if you have only 2 Deployment Groups - for Preprod and Prod servers you can just delete ```dev``` and ```stage``` rows. 
 3. If you have httpAuth in your Redmine - switch `http_auth['enabled']` var to `True` and enter username and password to variables below.
 4. That's all, you're about to start!
 
 # Usage
 To execute program you need to run command:
 
-`python  main.py`
+```python  main.py```
 
 Select required environment you're going to deploy.
 
