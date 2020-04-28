@@ -76,7 +76,7 @@ class Environment(object):
         if len(self._ticket_list) <= 0:
             return False
 
-        if self._utils.prompt('Dow you want to create a ticket with this list?'):
+        if self._utils.prompt('Do you want to create a ticket with this list?'):
             try:
 
                 ticket_subject = self._config['issue_params']['subject'].format(
